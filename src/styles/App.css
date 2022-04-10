@@ -5,3 +5,11 @@
   border-radius: 12px !important;
   justify-content: start !important;
 }
+
+.project-desc-container  ul {
+  margin-left: 20px;
+}
+
+.project-desc-container  a {
+  text-decoration: underline;
+}

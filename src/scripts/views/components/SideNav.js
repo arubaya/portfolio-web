@@ -1,6 +1,5 @@
 import React from 'react'
 import * as Material from '@mui/material';
-import * as ReactFeather from 'react-feather';
 import * as ReactRouterDom from 'react-router-dom';
 import * as recoil from 'recoil';
 

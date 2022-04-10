@@ -100,7 +100,7 @@ const theme = (mode) => ({
       fontSize: '1rem',
     },
     body2: {
-      fontWeight: 400,
+      fontWeight: 300,
       fontSize: '0.875rem',
     },
     caption: {
