@@ -1,27 +1,76 @@
-import { createTheme } from '@mui/material';
-
-const theme = createTheme({
+const theme = (mode) => ({
   palette: {
-    primary: {
-      main: '#24B78B',
-      contrastText: '#fff',
-    },
-    secondary: {
-      main: '#0068FF',
-      contrastText: '#fff',
-    },
-    text: {
-      primary: '#212b36',
-      secondary: '#637381',
-    },
+    mode: mode,
+    ...(mode === 'light' ? {
+      primary: {
+        main: '#006D35',
+        contrastText: '#fff',
+      },
+      secondary: {
+        main: '#4F6352',
+        contrastText: '#fff',
+      },
+      error: {
+        main: '#BA1B1B',
+        contrastText: '#fff',
+      },
+      info: {
+        main: '#3A656F',
+        contrastText: '#fff',
+      },
+      background: {
+        default: '#FBFDF7',
+        paper: '#FBFDF7',
+      },
+      divider: '#727971',
+      text: {
+        primary: '#1A1C1A',
+        secondary: '#414941',
+      },
+    } : {
+      primary: {
+        main: '#4BE085',
+        contrastText: '#003919',
+      },
+      secondary: {
+        main: '#B7CCB8',
+        contrastText: '#223526',
+      },
+      error: {
+        main: '#FFB4A9',
+        contrastText: '#680003',
+      },
+      info: {
+        main: '#A2CED9',
+        contrastText: '#02363F',
+      },
+      background: {
+        default: '#1A1C1A',
+        paper: '#414941',
+      },
+      divider: '#8B938A',
+      text: {
+        primary: '#E2E3DE',
+        secondary: '#C1C9BF',
+      },
+    }),
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 100,
+        },
+      }
+    }
+  },
   shape: {
-    borderRadius: 15,
+    borderRadius: 12,
   },
   typography: {
-    fontFamily: '"Public Sans", sans-serif',
+    fontFamily: '"Poppins", sans-serif',
     h1: {
       fontWeight: 700,
       fontSize: '4rem',

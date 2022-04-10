@@ -1,21 +1,26 @@
 import { atom } from 'recoil';
 
-export const alertState = atom({ key: 'alertState', default: { open: false, severity: 'error', message: '' } });
+export const colorModeState = atom({ key: 'colorModeState', default: 'dark' });
 
-export const alertDialogState = atom({
-  key: 'alertDialogState',
-  default: {
-    open: false,
-    accept: false,
-    handleAccept: () => {},
-    title: '',
-    bodyText: '',
-    acceptText: '',
-  },
+export const drawerState = atom({ key: 'drawerState', default: false });
+
+export const navMenuList = atom({
+  key: 'navMenuList',
+  default: [
+    {
+      menu: 'about',
+      link: '/',
+      text: 'About Me',
+    },
+    {
+      menu: 'projects',
+      link: '/projects',
+      text: 'Projects',
+    },
+    {
+      menu: 'experience',
+      link: '/experience',
+      text: 'Experience',
+    },
+  ],
 });
-
-export const loadingState = atom({ key: 'loadingState', default: false });
-
-export const updateData = atom({ key: 'updateData', default: false });
-
-export const accordionChange = atom({ key: 'accordionChange', default: false });

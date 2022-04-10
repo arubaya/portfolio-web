@@ -1,16 +1,27 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import * as Page from '../views/pages';
-import Header from '../views/components/Header';
+import * as Component from '../views/components';
 
 function Router() {
   return (
     <Switch>
-
-      {/* Dashborard Page */}
+      {/* About Page */}
       <Route exact path="/">
-          <Header />
+          <Component.Header />
           <Page.AboutPage />
+      </Route>
+
+      {/* Projects Page */}
+      <Route exact path="/projects">
+          <Component.Header />
+          <Page.ProjectPage />
+      </Route>
+
+      {/* Experience Page */}
+      <Route exact path="/experience">
+          <Component.Header />
+          <Page.ExperiencePage />
       </Route>
 
       {/* <Route exact path="*">
