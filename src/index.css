@@ -47,8 +47,10 @@ main {
   left: 0;
   position: fixed;
   width: 250px;
-  height: calc(100vh - 20px);
+  height: calc(100% - 20px);
   margin: 10px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .header-container {

@@ -16,7 +16,7 @@ function SideNav() {
   const navMenuList = recoil.useRecoilValue(store.navMenuList);
   const setDrawerState = recoil.useSetRecoilState(store.drawerState);
 
-  // const applicationVersion = 'v2022.04.06';
+  const applicationVersion = 'v2022.04.10';
   
   React.useEffect(() => {
     let isSubscribe = true;
@@ -78,6 +78,10 @@ function SideNav() {
             </Material.ButtonBase>
           </ReactRouterDom.NavLink>
         ))}
+      </Material.Box>
+      <Material.Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', margin: '50px 0 20px 0' }}>
+        <Material.Typography variant="caption" color='text.secondry' sx={{ fontSize: '9px' }}>&copy; 2022. Tsabit Arubaya</Material.Typography>
+        {/* <Material.Typography variant="caption" color='text.secondry' sx={{ fontSize: '9px' }}>{applicationVersion}</Material.Typography> */}
       </Material.Box>
     </Material.Paper>
   )
