@@ -1,11 +1,14 @@
 import React from 'react'
 import * as Material from '@mui/material';
 import * as ReactRouterDom from 'react-router-dom';
+import * as ReactFeather from 'react-feather';
 
 import mainPhoto from '../../../assets/main-photo.png';
+import Cv from '../../../assets/cv-en.pdf';
 import * as Component from '../components';
 
 function AboutPage() {
+  const theme = Material.useTheme();
   return (
     <Material.Box component='main' id="mainPage">
       <Material.Box
@@ -33,7 +36,18 @@ function AboutPage() {
             I had an internship at Admission UIN Sunan Kalijaga as a junior programmer and was in charge of developing the CBT (Computer Based Test) website system at UIN Sunan Kalijaga. There, I re-engineered the CBT system to make it more convenient to use and fixed the existing problems.
           </Material.Typography>
           <Component.ListSocMed />
-          <Material.Box sx={{ marginTop: '30px' }}>
+          <Material.Box sx={{ marginTop: '20px' }}>
+            <a href={Cv} download="CV - Tsabit Arubaya">
+              <Material.Button
+                size='large'
+                variant='text'
+                startIcon={
+                  <ReactFeather.Download color={theme.palette.primary.main} size='20px' />
+                }
+            >Download Cv</Material.Button>
+            </a>
+          </Material.Box>
+          <Material.Box sx={{ marginTop: '10px' }}>
             <ReactRouterDom.NavLink to='/projects'>
               <Material.Button size='large' variant='contained'>check out my project!</Material.Button>
             </ReactRouterDom.NavLink>

@@ -3,7 +3,6 @@ import * as Material from '@mui/material';
 import { marked } from 'marked';
 
 import * as Contentful from '../../utils/contentful';
-import { flexbox, fontSize } from '@mui/material/node_modules/@mui/system';
 
 function ProjectPage() {
   const [projectList, setProjectList] = React.useState([]);
@@ -18,8 +17,16 @@ function ProjectPage() {
           content_type: 'projects'
         })
         .then((data) => {
-          setProjectList(data.items);
-          console.log(data.items);
+          setProjectList(data.items.map((item) => (
+            {
+              catergory: item.fields.catergory,
+              description: item.fields.description,
+              name: item.fields.name,
+              shortDescription: item.fields.shortDescription,
+              imageUrl: item.fields.image.fields.file.url,
+              url: item.fields.url,
+            }
+          )));
         })
         .catch((error) => console.log(error));
     }
@@ -43,35 +50,35 @@ function ProjectPage() {
           {projectList.length > 0 ? (
             <Material.Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
               {projectList.map((projectData) => (
-                <Material.Card sx={{ minWidth: '250px', maxWidth: '300px', width: { xs: '100%', md: '300px' }, height: 'fit-content', margin: '15px' }} elevation={0} variant='outlined' key={projectData.fields.url}>
+                <Material.Card sx={{ minWidth: '250px', maxWidth: '300px', width: { xs: '100%', md: '300px' }, height: 'fit-content', margin: '15px' }} elevation={0} variant='outlined' key={projectData.url}>
                   <Material.CardActionArea>
-                    <a href={projectData.fields.url} target='_blank' rel='noreferrer'>
+                    <a href={projectData.url} target='_blank' rel='noreferrer'>
                       <Material.CardMedia
                         component='img'
                         height='140'
-                        image={projectData.fields.image.fields.file.url}
+                        image={projectData.imageUrl}
                         alt='green iguana'
                       />
                       <Material.CardContent>
                         <Material.Typography gutterBottom variant='h5' color='text.primary'>
-                          {projectData.fields.name}
+                          {projectData.name}
                         </Material.Typography>
                         <Material.Typography variant='body2' color='text.secondary'>
-                        {projectData.fields.shortDescription}
+                        {projectData.shortDescription}
                         </Material.Typography>
                       </Material.CardContent>
                     </a>
                   </Material.CardActionArea>
-                  {openDesc.open && openDesc.name === projectData.fields.name ? (
-                    <Material.Box className='project-desc-container' sx={{ padding: '5px 16px', color: 'text.primary', fontSize: '0.875rem' }} dangerouslySetInnerHTML={{__html: marked(projectData.fields.description)}} />
+                  {openDesc.open && openDesc.name === projectData.name ? (
+                    <Material.Box className='project-desc-container' sx={{ padding: '5px 16px', color: 'text.primary', fontSize: '0.875rem' }} dangerouslySetInnerHTML={{__html: marked(projectData.description)}} />
                   ) : null}
                   <Material.CardActions>
-                  {openDesc.open && openDesc.name === projectData.fields.name ? (
+                  {openDesc.open && openDesc.name === projectData.name ? (
                     <Material.Button size='small' color='primary' onClick={() => setOpenDesc({ open: false, name: '' })}>
                       Show Less...
                     </Material.Button>
                   ) : (
-                    <Material.Button size='small' color='primary' onClick={() => setOpenDesc({ open: true, name: projectData.fields.name })}>
+                    <Material.Button size='small' color='primary' onClick={() => setOpenDesc({ open: true, name: projectData.name })}>
                       Show More...
                     </Material.Button>
                   )}
